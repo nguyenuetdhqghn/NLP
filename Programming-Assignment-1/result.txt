@@ -1,0 +1,92 @@
+
+Task 1 - Cosine Similarity
+Load word2vec
+Đã load 77021 từ
+Đã load 400 cặp từ ViSim-400
+Số cặp bị thiếu từ trong từ điển: 56/400
+Spearman correlation với Sim1: 0.4078
+Spearman correlation với Sim2: 0.4078
+
+Task 2 - KNN
+Load word2vec
+Đã load 77021 từ
+
+Top 5 từ gần nhất với 'sinh_viên':
+  sv: 0.7982
+  du_học_sinh: 0.6784
+  hs-sv: 0.6703
+  học_viên: 0.6617
+  lưu_học_sinh: 0.6282
+
+Top 5 từ gần nhất với 'học_sinh':
+  hs: 0.7949
+  giáo_viên: 0.6859
+  hs-sv: 0.6576
+  hssv: 0.6179
+  thầy_cô_giáo: 0.6077
+
+Top 5 từ gần nhất với 'đẹp':
+  xinh: 0.6503
+  tròn_trịa: 0.5621
+  đẹp_hơn: 0.5510
+  vui_mắt: 0.5486
+  tuyệt_mỹ: 0.5479
+
+Task 3 - Classifier
+Load word2vec
+Đã load 77021 từ
+
+Train (trước khi lọc): 11558 cặp SYN, 2000 cặp ANT
+Load test set ViCon-400
+  400_noun_pairs.txt: 400 cặp
+  400_verb_pairs.txt: 400 cặp
+  600_adj_pairs.txt: 600 cặp
+Train sau khi loại overlap: 11568/13558
+Skipped 5279 pairs due to missing embeddings
+Train set sau xử lý: 6289 mẫu, bỏ qua 5279 cặp thiếu từ
+  Phân bố lớp: 5736 SYN / 553 ANT
+
+Skipped 227 pairs due to missing embeddings
+Test set sau xử lý: 1173 mẫu, bỏ qua 227 cặp thiếu từ
+
+Logistic Regression (mặc định)
+              precision    recall  f1-score   support
+
+         ANT       0.87      0.26      0.39       639
+         SYN       0.52      0.95      0.67       534
+
+    accuracy                           0.57      1173
+   macro avg       0.69      0.60      0.53      1173
+weighted avg       0.71      0.57      0.52      1173
+
+Logistic Regression (class_weight='balanced')
+              precision    recall  f1-score   support
+
+         ANT       0.74      0.54      0.62       639
+         SYN       0.58      0.77      0.66       534
+
+    accuracy                           0.64      1173
+   macro avg       0.66      0.66      0.64      1173
+weighted avg       0.67      0.64      0.64      1173
+
+MLP Classifier (dữ liệu gốc, chưa balance)
+              precision    recall  f1-score   support
+
+         ANT       0.96      0.32      0.48       639
+         SYN       0.55      0.99      0.70       534
+
+    accuracy                           0.62      1173
+   macro avg       0.75      0.65      0.59      1173
+weighted avg       0.77      0.62      0.58      1173
+
+MLP Classifier (sau khi oversample cho cân bằng)
+Sau khi balance: 11472 mẫu (5736 SYN / 5736 ANT)
+
+              precision    recall  f1-score   support
+
+         ANT       0.95      0.38      0.54       639
+         SYN       0.57      0.97      0.72       534
+
+    accuracy                           0.65      1173
+   macro avg       0.76      0.68      0.63      1173
+weighted avg       0.77      0.65      0.62      1173
